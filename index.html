@@ -221,29 +221,59 @@
             <a href="#test" class="toc-h1 toc-link" data-title="Test">Test</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                    <a href="#https-request" class="toc-h2 toc-link" data-title="HTTPS Request">HTTPS Request</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#headers" class="toc-h1 toc-link" data-title="Headers">Headers</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#teachers" class="toc-h1 toc-link" data-title="Teachers">Teachers</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#get-teachers-list" class="toc-h2 toc-link" data-title="Get Teachers List">Get Teachers List</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#get-teacher-detail" class="toc-h2 toc-link" data-title="Get Teacher Detail">Get Teacher Detail</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-available-interview-times" class="toc-h2 toc-link" data-title="Get Available Interview Times">Get Available Interview Times</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#appointment" class="toc-h1 toc-link" data-title="Appointment">Appointment</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-orders-list" class="toc-h2 toc-link" data-title="Get Orders List">Get Orders List</a>
+                  </li>
+                  <li>
+                    <a href="#get-interview-detail" class="toc-h2 toc-link" data-title="Get Interview Detail">Get Interview Detail</a>
+                  </li>
+                  <li>
+                    <a href="#confirm-interview-times" class="toc-h2 toc-link" data-title="Confirm Interview Times">Confirm Interview Times</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#wechat-pay" class="toc-h1 toc-link" data-title="Wechat Pay">Wechat Pay</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-payment" class="toc-h2 toc-link" data-title="Request Payment">Request Payment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#favorite" class="toc-h1 toc-link" data-title="Favorite">Favorite</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-favorite-teacher" class="toc-h2 toc-link" data-title="Add Favorite Teacher">Add Favorite Teacher</a>
+                  </li>
+                  <li>
+                    <a href="#remove-favorite-teacher" class="toc-h2 toc-link" data-title="Remove Favorite Teacher">Remove Favorite Teacher</a>
+                  </li>
+              </ul>
           </li>
       </ul>
     </div>
@@ -254,196 +284,141 @@
 <p>外教项目API文档</p>
 <h1 id='test'>Test</h1><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s2">"https://teacher.filippine.com.cn/api/test"</span>
 </code></pre>
-<p>此接口测试是否正确运行</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://teacher.filippine.com.cn/api/test</code></p>
-<h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>The above command should return JSON structured like this:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
+<p>此接口测试服务是否正确运行</p>
+<h3 id='https-request'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/test</code></p>
+<h1 id='headers'>Headers</h1>
+<blockquote>
+<p>Example header:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<p>Every API request must come with authorization header (the JSON Web Token string)</p>
+
+<p>Every API request must come with application/json content type</p>
+<h1 id='teachers'>Teachers</h1><h2 id='get-teachers-list'>Get Teachers List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getPublishedTeachersList?category=all&amp;page=5&amp;per_page=10"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"candidates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieve all published teachers by categories</p>
+<h3 id='https-request-2'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/getPublishedTeachersList</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
+<td>category</td>
 <td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>类型: all / new / recommend</td>
+</tr>
+<tr>
+<td>page</td>
+<td>true</td>
+<td>当前是第几页</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>true</td>
+<td>每一页的个数</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id='get-teacher-detail'>Get Teacher Detail</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getTeacherDetail?id=90833356"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command should return JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"candidate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"english_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evelyn  Navarro  Mantabonte"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1987-07-03"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nationality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"菲律宾"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>This endpoint retrieve the detail information of a teacher</p>
+<h3 id='https-request-3'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/getTeacherDetail</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>id</td>
+<td>true</td>
+<td>教师唯一id</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id='get-available-interview-times'>Get Available Interview Times</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInterviewTimes?id=90833356"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command should return JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interview_times"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"2019-05-29"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"14:30 - 15:00"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"2019-05-30"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"9:30 - 10:00"</span><span class="p">,</span><span class="w"> </span><span class="s2">"15:30 - 16:00"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>This endpoint retrieve the <strong>available</strong> interview time slots of a teacher</p>
+<h3 id='https-request-4'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/getInterviewTimes</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>id</td>
+<td>true</td>
+<td>教师唯一id</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
-
+<h1 id='appointment'>Appointment</h1><h2 id='get-orders-list'>Get Orders List</h2><h2 id='get-interview-detail'>Get Interview Detail</h2><h2 id='confirm-interview-times'>Confirm Interview Times</h2><h1 id='wechat-pay'>Wechat Pay</h1><h2 id='request-payment'>Request Payment</h2><h1 id='favorite'>Favorite</h1><h2 id='add-favorite-teacher'>Add Favorite Teacher</h2><h2 id='remove-favorite-teacher'>Remove Favorite Teacher</h2>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
