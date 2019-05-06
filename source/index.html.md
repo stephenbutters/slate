@@ -4,9 +4,6 @@ title: 外教项目API文档
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
-includes:
-  - errors
-
 ---
 
 # Introduction
@@ -19,143 +16,157 @@ includes:
 curl -X GET "https://teacher.filippine.com.cn/api/test"
 ```
 
-此接口测试是否正确运行
+> The above command should return JSON structured like this:
 
-### HTTP Request
+```json
+{
+  "success": true
+}
+```
+
+此接口测试服务是否正确运行
+
+### HTTPS Request
 
 `GET https://teacher.filippine.com.cn/api/test`
 
 
+# Headers
 
-
-
-# Authentication
-
-> To authorize, use this code:
+> Example header:
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+Every API request must come with authorization header (the JSON Web Token string)
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Every API request must come with application/json content type
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+# Teachers
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
+## Get Teachers List
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://teacher.filippine.com.cn/api/getPublishedTeachersList?category=all&page=5&per_page=10"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
 
-> The above command returns JSON structured like this:
+> The above command should return JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "success": true,
+  "candidates": [
+    {...},
+    {...},
+    {...}
+  ]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieve all published teachers by categories
 
-### HTTP Request
+### HTTPS Request
 
-`GET http://example.com/api/kittens`
+`GET https://teacher.filippine.com.cn/api/getPublishedTeachersList`
 
 ### Query Parameters
 
-Parameter | Default | Description
+Parameter | Required | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+category | true | 类型: all / new / recommend
+page | true | 当前是第几页
+per_page | true | 每一页的个数
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
+## Get Teacher Detail
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl "https://teacher.filippine.com.cn/api/getTeacherDetail?id=90833356"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
 
-> The above command returns JSON structured like this:
+> The above command should return JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "success": true,
+  "candidate": {
+    "english_name": "Evelyn  Navarro  Mantabonte",
+    "age": 31,
+    "birthday": "1987-07-03",
+    "nationality": "菲律宾",
+    ...
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieve the detail information of a teacher
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+### HTTPS Request
 
-### HTTP Request
+`GET https://teacher.filippine.com.cn/api/getTeacherDetail`
 
-`GET http://example.com/kittens/<ID>`
+### Query Parameters
 
-### URL Parameters
+Parameter | Required | Description
+--------- | ------- | -----------
+id | true | 教师唯一id
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
+## Get Available Interview Times
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+curl "https://teacher.filippine.com.cn/api/getInterviewTimes?id=90833356"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
 
-> The above command returns JSON structured like this:
+> The above command should return JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "success": true,
+  "interview_times": {
+    "2019-05-29": ["14:30 - 15:00"],
+    "2019-05-30": ["9:30 - 10:00", "15:30 - 16:00"]
+  }
 }
 ```
 
-This endpoint deletes a specific kitten.
+This endpoint retrieve the **available** interview time slots of a teacher
 
-### HTTP Request
+### HTTPS Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://teacher.filippine.com.cn/api/getInterviewTimes`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Parameter | Required | Description
+--------- | ------- | -----------
+id | true | 教师唯一id
+
+# Appointment
+
+## Get Orders List
+
+## Get Interview Detail
+
+## Confirm Interview Times
+
+# Wechat Pay
+
+## Request Payment
+
+# Favorite
+
+## Add Favorite Teacher
+
+## Remove Favorite Teacher
