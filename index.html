@@ -426,7 +426,7 @@
 <td>教师唯一id</td>
 </tr>
 </tbody></table>
-<h2 id='get-available-interview-times'>Get Available Interview Times</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInterviewTimes?id=90833356"</span>
+<h2 id='get-available-interview-times'>Get Available Interview Times</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInterviewTimes?id=90833356&amp;starttime=2019-04-28&amp;endtime=2019-05-28"</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
@@ -436,7 +436,7 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"interview_times"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"available_times"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"2019-05-29"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"14:30 - 15:00"</span><span class="p">],</span><span class="w">
     </span><span class="s2">"2019-05-30"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"9:30 - 10:00"</span><span class="p">,</span><span class="w"> </span><span class="s2">"15:30 - 16:00"</span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -461,12 +461,12 @@
 <tr>
 <td>starttime</td>
 <td>false</td>
-<td>开始时间</td>
+<td>开始时间(日期 YYYY-MM-DD)</td>
 </tr>
 <tr>
 <td>endtime</td>
 <td>false</td>
-<td>结束时间</td>
+<td>结束时间(日期 YYYY-MM-DD)</td>
 </tr>
 </tbody></table>
 <h1 id='appointment'>Appointment</h1><h2 id='get-orders-list'>Get Orders List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInterviewOrdersList?page=1&amp;per_page=5"</span>
