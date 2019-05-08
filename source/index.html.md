@@ -48,6 +48,40 @@ Every API request must come with application/json content type
 
 # Teachers
 
+## Get Initial Teachers List
+
+```shell
+curl "https://teacher.filippine.com.cn/api/getInitialTeachersList?limit=5"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true,
+  "candidates": {
+    "recommend": [{...}, {...}, ...],
+    "new": [{...}, {...}, ...],
+    "all": [{...}, {...}, ...]
+  }
+}
+```
+
+This endpoint retrieves initial teachers list with all three categories
+
+### HTTPS Request
+
+`GET https://teacher.filippine.com.cn/api/getInitialTeachersList`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+limit | true | 教师个数(每一个类别)
+
 ## Get Teachers List
 
 ```shell
@@ -153,13 +187,15 @@ This endpoint retrieve the **available** interview time slots of a teacher
 Parameter | Required | Description
 --------- | ------- | -----------
 id | true | 教师唯一id
+starttime | false | 开始时间
+endtime | false | 结束时间
 
 # Appointment
 
 ## Get Orders List
 
 ```shell
-curl "https://teacher.filippine.com.cn/api/getInterviewOrdersList?user_phone=18138712128&page=1&per_page=5"
+curl "https://teacher.filippine.com.cn/api/getInterviewOrdersList?page=1&per_page=5"
   -X GET
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
@@ -196,7 +232,6 @@ This endpoint retrieves the purchased orders of a user
 
 Parameter | Required | Description
 --------- | ------- | -----------
-user_phone | true | 用户id，也就是手机号码
 page | true | 当前是第几页
 per_page | true | 每一页的个数
 
@@ -241,7 +276,7 @@ id | true | 订单id
 ```shell
 curl "https://teacher.filippine.com.cn/api/pushInterviewTime"
   -X POST
-  -d '{"user_phone": "18138712128", "order_id": "mmmmm", "interview_id": "222", "interview_time": {"primary": {"2019-05-19": "9:30 - 10:00"}, "secondary": {"2019-05-20": "10:30 - 11:00"}}}'
+  -d '{"order_id": "mmmmm", "interview_id": "222", "interview_time": {"primary": {"2019-05-19": "9:30 - 10:00"}, "secondary": {"2019-05-20": "10:30 - 11:00"}}}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -264,7 +299,6 @@ This endpoint let a user choose his preferrable interview time
 
 Parameter | Required | Description
 --------- | ------- | -----------
-user_phone | true | 用户id, 也就是手机号码
 order_id | true | 订单id
 interview_id | true | 面试id
 interview_time | true | 雇主选择的面试时间
@@ -283,7 +317,7 @@ secondary | true | 备选面试时间
 ```shell
 curl "https://teacher.filippine.com.cn/api/requestPayment"
   -X POST
-  -d '{"user_phone":"18138712128", "order_id":"mmmmm", "body":"腾讯充值中心-QQ会员充值", "detail":"商品详情在这里写", "attach":"深圳分店", "out_trade_no":"20150806125346", "total_fee":"88", "limit_pay":"no_credit", "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'
+  -d '{"order_id":"mmmmm", "body":"腾讯充值中心-QQ会员充值", "detail":"商品详情在这里写", "attach":"深圳分店", "out_trade_no":"20150806125346", "total_fee":"88", "limit_pay":"no_credit", "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -316,7 +350,6 @@ This endpoint send payment request to our server which will then send order requ
 
 Parameter | Required | Description
 --------- | ------- | -----------
-user_phone | true | 用户id, 也就是手机号码
 order_id | true | 订单id
 body | true | 商品简单描述，该字段请按照规范传递，具体请见[参数规定](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_2)
 detail | false | 商品详细描述
@@ -344,7 +377,7 @@ paySign | 服务器返回的签名
 ## Get Favorite List
 
 ```shell
-curl "https://teacher.filippine.com.cn/api/getFavoriteList?user_phone=18138712128"
+curl "https://teacher.filippine.com.cn/api/getFavoriteList"
   -X GET
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
@@ -372,18 +405,12 @@ This endpoint retrieves favorite teachers of a user
 
 `GET https://teacher.filippine.com.cn/api/getFavoriteList`
 
-### Query Parameters
-
-Parameter | Required | Description
---------- | ------- | -----------
-user_phone | true | 用户id, 也就是手机号码
-
 ## Add Favorite Teachers
 
 ```shell
 curl "https://teacher.filippine.com.cn/api/addFavorite"
   -X POST
-  -d '{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'
+  -d '{"teachers": ["27446972", "13634857", "90833356"]}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -406,7 +433,6 @@ This endpoint add favorite teachers of a user
 
 Parameter | Required | Description
 --------- | ------- | -----------
-user_phone | true | 用户id, 也就是手机号码
 teachers | true | 教师id list
 
 ## Remove Favorite Teachers
@@ -414,7 +440,7 @@ teachers | true | 教师id list
 ```shell
 curl "https://teacher.filippine.com.cn/api/removeFavorite"
   -X POST
-  -d '{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'
+  -d '{"teachers": ["27446972", "13634857", "90833356"]}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -437,5 +463,4 @@ This endpoint remove favorite teachers of a user
 
 Parameter | Required | Description
 --------- | ------- | -----------
-user_phone | true | 用户id, 也就是手机号码
 teachers | true | 教师id list
