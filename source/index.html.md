@@ -341,6 +341,101 @@ paySign | 服务器返回的签名
 
 # Favorite
 
-## Add Favorite Teacher
+## Get Favorite List
 
-## Remove Favorite Teacher
+```shell
+curl "https://teacher.filippine.com.cn/api/getFavoriteList?user_phone=18138712128"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true,
+  "favorites": [
+    {
+      "english_name": "Evelyn Navarro Mantabonte",
+      ...
+    },
+    {...},
+    {...}
+  ]
+}
+```
+
+This endpoint retrieves favorite teachers of a user
+
+### HTTPS Request
+
+`GET https://teacher.filippine.com.cn/api/getFavoriteList`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+user_phone | true | 用户id, 也就是手机号码
+
+## Add Favorite Teachers
+
+```shell
+curl "https://teacher.filippine.com.cn/api/addFavorite"
+  -X POST
+  -d '{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint add favorite teachers of a user
+
+### HTTPS Request
+
+`POST https://teacher.filippine.com.cn/api/addFavorite`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+user_phone | true | 用户id, 也就是手机号码
+teachers | true | 教师id list
+
+## Remove Favorite Teachers
+
+```shell
+curl "https://teacher.filippine.com.cn/api/removeFavorite"
+  -X POST
+  -d '{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint remove favorite teachers of a user
+
+### HTTPS Request
+
+`POST https://teacher.filippine.com.cn/api/removeFavorite`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+user_phone | true | 用户id, 也就是手机号码
+teachers | true | 教师id list
