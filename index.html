@@ -268,10 +268,13 @@
             <a href="#favorite" class="toc-h1 toc-link" data-title="Favorite">Favorite</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#add-favorite-teacher" class="toc-h2 toc-link" data-title="Add Favorite Teacher">Add Favorite Teacher</a>
+                    <a href="#get-favorite-list" class="toc-h2 toc-link" data-title="Get Favorite List">Get Favorite List</a>
                   </li>
                   <li>
-                    <a href="#remove-favorite-teacher" class="toc-h2 toc-link" data-title="Remove Favorite Teacher">Remove Favorite Teacher</a>
+                    <a href="#add-favorite-teachers" class="toc-h2 toc-link" data-title="Add Favorite Teachers">Add Favorite Teachers</a>
+                  </li>
+                  <li>
+                    <a href="#remove-favorite-teachers" class="toc-h2 toc-link" data-title="Remove Favorite Teachers">Remove Favorite Teachers</a>
                   </li>
               </ul>
           </li>
@@ -687,7 +690,114 @@
 </tbody></table>
 
 <aside class="notice">微信支付交互流程具体请见<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4">这里</a></aside>
-<h1 id='favorite'>Favorite</h1><h2 id='add-favorite-teacher'>Add Favorite Teacher</h2><h2 id='remove-favorite-teacher'>Remove Favorite Teacher</h2>
+<h1 id='favorite'>Favorite</h1><h2 id='get-favorite-list'>Get Favorite List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getFavoriteList?user_phone=18138712128"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"favorites"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"english_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evelyn Navarro Mantabonte"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves favorite teachers of a user</p>
+<h3 id='https-request-9'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/getFavoriteList</code></p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_phone</td>
+<td>true</td>
+<td>用户id, 也就是手机号码</td>
+</tr>
+</tbody></table>
+<h2 id='add-favorite-teachers'>Add Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/addFavorite"</span>
+  -X POST
+  -d <span class="s1">'{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint add favorite teachers of a user</p>
+<h3 id='https-request-10'>HTTPS Request</h3>
+<p><code>POST https://teacher.filippine.com.cn/api/addFavorite</code></p>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_phone</td>
+<td>true</td>
+<td>用户id, 也就是手机号码</td>
+</tr>
+<tr>
+<td>teachers</td>
+<td>true</td>
+<td>教师id list</td>
+</tr>
+</tbody></table>
+<h2 id='remove-favorite-teachers'>Remove Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/removeFavorite"</span>
+  -X POST
+  -d <span class="s1">'{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint remove favorite teachers of a user</p>
+<h3 id='https-request-11'>HTTPS Request</h3>
+<p><code>POST https://teacher.filippine.com.cn/api/removeFavorite</code></p>
+<h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_phone</td>
+<td>true</td>
+<td>用户id, 也就是手机号码</td>
+</tr>
+<tr>
+<td>teachers</td>
+<td>true</td>
+<td>教师id list</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
