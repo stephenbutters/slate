@@ -158,7 +158,7 @@ id | true | 教师唯一id
 ## Get Available Interview Times
 
 ```shell
-curl "https://teacher.filippine.com.cn/api/getInterviewTimes?id=90833356"
+curl "https://teacher.filippine.com.cn/api/getInterviewTimes?id=90833356&starttime=2019-04-28&endtime=2019-05-28"
   -X GET
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
@@ -169,7 +169,7 @@ curl "https://teacher.filippine.com.cn/api/getInterviewTimes?id=90833356"
 ```json
 {
   "success": true,
-  "interview_times": {
+  "available_times": {
     "2019-05-29": ["14:30 - 15:00"],
     "2019-05-30": ["9:30 - 10:00", "15:30 - 16:00"]
   }
@@ -187,8 +187,8 @@ This endpoint retrieve the **available** interview time slots of a teacher
 Parameter | Required | Description
 --------- | ------- | -----------
 id | true | 教师唯一id
-starttime | false | 开始时间
-endtime | false | 结束时间
+starttime | false | 开始时间(日期 YYYY-MM-DD)
+endtime | false | 结束时间(日期 YYYY-MM-DD)
 
 # Appointment
 
