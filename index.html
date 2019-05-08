@@ -232,6 +232,9 @@
             <a href="#teachers" class="toc-h1 toc-link" data-title="Teachers">Teachers</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-initial-teachers-list" class="toc-h2 toc-link" data-title="Get Initial Teachers List">Get Initial Teachers List</a>
+                  </li>
+                  <li>
                     <a href="#get-teachers-list" class="toc-h2 toc-link" data-title="Get Teachers List">Get Teachers List</a>
                   </li>
                   <li>
@@ -308,7 +311,41 @@
 <p>Every API request must come with authorization header (the JSON Web Token string)</p>
 
 <p>Every API request must come with application/json content type</p>
-<h1 id='teachers'>Teachers</h1><h2 id='get-teachers-list'>Get Teachers List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getPublishedTeachersList?category=all&amp;page=5&amp;per_page=10"</span>
+<h1 id='teachers'>Teachers</h1><h2 id='get-initial-teachers-list'>Get Initial Teachers List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInitialTeachersList?limit=5"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"candidates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recommend"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"new"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"all"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves initial teachers list with all three categories</p>
+<h3 id='https-request-2'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/getInitialTeachersList</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>true</td>
+<td>教师个数(每一个类别)</td>
+</tr>
+</tbody></table>
+<h2 id='get-teachers-list'>Get Teachers List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getPublishedTeachersList?category=all&amp;page=5&amp;per_page=10"</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
@@ -326,9 +363,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieve all published teachers by categories</p>
-<h3 id='https-request-2'>HTTPS Request</h3>
+<h3 id='https-request-3'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getPublishedTeachersList</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -373,9 +410,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieve the detail information of a teacher</p>
-<h3 id='https-request-3'>HTTPS Request</h3>
+<h3 id='https-request-4'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getTeacherDetail</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -406,9 +443,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieve the <strong>available</strong> interview time slots of a teacher</p>
-<h3 id='https-request-4'>HTTPS Request</h3>
+<h3 id='https-request-5'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getInterviewTimes</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -421,8 +458,18 @@
 <td>true</td>
 <td>教师唯一id</td>
 </tr>
+<tr>
+<td>starttime</td>
+<td>false</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>false</td>
+<td>结束时间</td>
+</tr>
 </tbody></table>
-<h1 id='appointment'>Appointment</h1><h2 id='get-orders-list'>Get Orders List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInterviewOrdersList?user_phone=18138712128&amp;page=1&amp;per_page=5"</span>
+<h1 id='appointment'>Appointment</h1><h2 id='get-orders-list'>Get Orders List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInterviewOrdersList?page=1&amp;per_page=5"</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
@@ -448,9 +495,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves the purchased orders of a user</p>
-<h3 id='https-request-5'>HTTPS Request</h3>
+<h3 id='https-request-6'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getInterviewOrdersList</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -458,11 +505,6 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>user_phone</td>
-<td>true</td>
-<td>用户id，也就是手机号码</td>
-</tr>
 <tr>
 <td>page</td>
 <td>true</td>
@@ -494,9 +536,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves the the order detail</p>
-<h3 id='https-request-6'>HTTPS Request</h3>
+<h3 id='https-request-7'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getInterviewOrder</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -512,7 +554,7 @@
 </tbody></table>
 <h2 id='user-choose-interview-time'>User Choose Interview Time</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/pushInterviewTime"</span>
   -X POST
-  -d <span class="s1">'{"user_phone": "18138712128", "order_id": "mmmmm", "interview_id": "222", "interview_time": {"primary": {"2019-05-19": "9:30 - 10:00"}, "secondary": {"2019-05-20": "10:30 - 11:00"}}}'</span>
+  -d <span class="s1">'{"order_id": "mmmmm", "interview_id": "222", "interview_time": {"primary": {"2019-05-19": "9:30 - 10:00"}, "secondary": {"2019-05-20": "10:30 - 11:00"}}}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -524,9 +566,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint let a user choose his preferrable interview time</p>
-<h3 id='https-request-7'>HTTPS Request</h3>
+<h3 id='https-request-8'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/pushInterviewTime</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -534,11 +576,6 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>user_phone</td>
-<td>true</td>
-<td>用户id, 也就是手机号码</td>
-</tr>
 <tr>
 <td>order_id</td>
 <td>true</td>
@@ -576,7 +613,7 @@
 </tbody></table>
 <h1 id='wechat-pay'>Wechat Pay</h1><h2 id='request-payment'>Request Payment</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/requestPayment"</span>
   -X POST
-  -d <span class="s1">'{"user_phone":"18138712128", "order_id":"mmmmm", "body":"腾讯充值中心-QQ会员充值", "detail":"商品详情在这里写", "attach":"深圳分店", "out_trade_no":"20150806125346", "total_fee":"88", "limit_pay":"no_credit", "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'</span>
+  -d <span class="s1">'{"order_id":"mmmmm", "body":"腾讯充值中心-QQ会员充值", "detail":"商品详情在这里写", "attach":"深圳分店", "out_trade_no":"20150806125346", "total_fee":"88", "limit_pay":"no_credit", "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -600,9 +637,9 @@
 </blockquote>
 
 <p>This endpoint send payment request to our server which will then send order request to wechat server</p>
-<h3 id='https-request-8'>HTTPS Request</h3>
+<h3 id='https-request-9'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/requestPayment</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -610,11 +647,6 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>user_phone</td>
-<td>true</td>
-<td>用户id, 也就是手机号码</td>
-</tr>
 <tr>
 <td>order_id</td>
 <td>true</td>
@@ -690,7 +722,7 @@
 </tbody></table>
 
 <aside class="notice">微信支付交互流程具体请见<a href="https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4">这里</a></aside>
-<h1 id='favorite'>Favorite</h1><h2 id='get-favorite-list'>Get Favorite List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getFavoriteList?user_phone=18138712128"</span>
+<h1 id='favorite'>Favorite</h1><h2 id='get-favorite-list'>Get Favorite List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getFavoriteList"</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
@@ -711,25 +743,11 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves favorite teachers of a user</p>
-<h3 id='https-request-9'>HTTPS Request</h3>
+<h3 id='https-request-10'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getFavoriteList</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>user_phone</td>
-<td>true</td>
-<td>用户id, 也就是手机号码</td>
-</tr>
-</tbody></table>
 <h2 id='add-favorite-teachers'>Add Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/addFavorite"</span>
   -X POST
-  -d <span class="s1">'{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'</span>
+  -d <span class="s1">'{"teachers": ["27446972", "13634857", "90833356"]}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -741,7 +759,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint add favorite teachers of a user</p>
-<h3 id='https-request-10'>HTTPS Request</h3>
+<h3 id='https-request-11'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/addFavorite</code></p>
 <h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
@@ -752,11 +770,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>user_phone</td>
-<td>true</td>
-<td>用户id, 也就是手机号码</td>
-</tr>
-<tr>
 <td>teachers</td>
 <td>true</td>
 <td>教师id list</td>
@@ -764,7 +777,7 @@
 </tbody></table>
 <h2 id='remove-favorite-teachers'>Remove Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/removeFavorite"</span>
   -X POST
-  -d <span class="s1">'{"user_phone":"18138712128", "teachers": ["27446972", "13634857", "90833356"]}'</span>
+  -d <span class="s1">'{"teachers": ["27446972", "13634857", "90833356"]}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -776,7 +789,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint remove favorite teachers of a user</p>
-<h3 id='https-request-11'>HTTPS Request</h3>
+<h3 id='https-request-12'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/removeFavorite</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
@@ -786,11 +799,6 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>user_phone</td>
-<td>true</td>
-<td>用户id, 也就是手机号码</td>
-</tr>
 <tr>
 <td>teachers</td>
 <td>true</td>
