@@ -341,6 +341,7 @@ curl "https://teacher.filippine.com.cn/api/requestPayment"
 > The above returned result will be used in **wx.requestPayment()**
 
 This endpoint send payment request to our server which will then send order request to wechat server
+
 Meanwhile, it will generate a purchase order
 
 ### HTTPS Request
