@@ -482,7 +482,7 @@
   </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56897412"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56897412"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agent_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ivy"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agent_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678987"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
@@ -636,7 +636,8 @@
 <p>The above returned result will be used in <strong>wx.requestPayment()</strong></p>
 </blockquote>
 
-<p>This endpoint send payment request to our server which will then send order request to wechat server</p>
+<p>This endpoint send payment request to our server which will then send order request to wechat server
+Meanwhile, it will generate a purchase order</p>
 <h3 id='https-request-9'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/requestPayment</code></p>
 <h3 id='query-parameters-8'>Query Parameters</h3>
