@@ -209,7 +209,7 @@ curl "https://teacher.filippine.com.cn/api/getInterviewOrdersList?page=1&per_pag
   "total": 3,
   "orders": [
     {
-      "id": "56897412",
+      "_id": "56897412",
       "agent_name": "Ivy",
       "agent_phone": "12345678987",
       "payment_amount": "200",
@@ -341,6 +341,7 @@ curl "https://teacher.filippine.com.cn/api/requestPayment"
 > The above returned result will be used in **wx.requestPayment()**
 
 This endpoint send payment request to our server which will then send order request to wechat server
+Meanwhile, it will generate a purchase order
 
 ### HTTPS Request
 
