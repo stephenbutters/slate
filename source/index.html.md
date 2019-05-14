@@ -317,7 +317,7 @@ secondary | true | 备选面试时间
 ```shell
 curl "https://teacher.filippine.com.cn/api/requestPayment"
   -X POST
-  -d '{"order_id":"mmmmm", "body":"腾讯充值中心-QQ会员充值", "detail":"商品详情在这里写", "attach":"深圳分店", "out_trade_no":"20150806125346", "total_fee":"88", "limit_pay":"no_credit", "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'
+  -d '{"candidates": ["27446972", "90833356"], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -327,7 +327,7 @@ curl "https://teacher.filippine.com.cn/api/requestPayment"
 ```json
 {
   "success": true,
-  "data": {
+  "bridge_data": {
     "appId": "wxd678efh567hg6787",
     "timeStamp": "1490840662",
     "nonceStr": "5K8264ILTKCH16CQ2502SI8ZNMTM67VS",
@@ -352,13 +352,7 @@ Meanwhile, it will generate a purchase order
 
 Parameter | Required | Description
 --------- | ------- | -----------
-order_id | true | 订单id
-body | true | 商品简单描述，该字段请按照规范传递，具体请见[参数规定](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_2)
-detail | false | 商品详细描述
-attach | false | 附加数据, 可作为自定义参数使用
-out_trade_no | true | 商户系统内部订单号，要求32个字符内，只能是数字、大小写字母, 且在同一个商户号下唯一, 详见[这里](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_2)
-total_fee | true | 订单总金额，单位为分
-limit_pay | false | 上传此参数no_credit--可限制用户不能使用信用卡支付
+candidates | true | 订单里面的教师id list
 openid | true | 用户在此appid下的唯一标识
 
 ### Returned Parameters
