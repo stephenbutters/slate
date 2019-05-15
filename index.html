@@ -719,7 +719,7 @@
 <p><code>GET https://teacher.filippine.com.cn/api/getFavoriteList</code></p>
 <h2 id='add-favorite-teachers'>Add Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/addFavorite"</span>
   -X POST
-  -d <span class="s1">'{"teachers": ["27446972", "13634857", "90833356"]}'</span>
+  -d <span class="s1">'{"teacher": "90833356"}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -742,14 +742,14 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>teachers</td>
+<td>teacher</td>
 <td>true</td>
-<td>教师id list</td>
+<td>教师id</td>
 </tr>
 </tbody></table>
 <h2 id='remove-favorite-teachers'>Remove Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/removeFavorite"</span>
   -X POST
-  -d <span class="s1">'{"teachers": ["27446972", "13634857", "90833356"]}'</span>
+  -d <span class="s1">'{"teacher": "90833356"}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -772,9 +772,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>teachers</td>
+<td>teacher</td>
 <td>true</td>
-<td>教师id list</td>
+<td>教师id</td>
 </tr>
 </tbody></table>
 
