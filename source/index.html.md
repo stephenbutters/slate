@@ -406,7 +406,7 @@ This endpoint retrieves favorite teachers of a user
 ```shell
 curl "https://teacher.filippine.com.cn/api/addFavorite"
   -X POST
-  -d '{"teachers": ["27446972", "13634857", "90833356"]}'
+  -d '{"teacher": "90833356"}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -429,14 +429,14 @@ This endpoint add favorite teachers of a user
 
 Parameter | Required | Description
 --------- | ------- | -----------
-teachers | true | 教师id list
+teacher | true | 教师id
 
 ## Remove Favorite Teachers
 
 ```shell
 curl "https://teacher.filippine.com.cn/api/removeFavorite"
   -X POST
-  -d '{"teachers": ["27446972", "13634857", "90833356"]}'
+  -d '{"teacher": "90833356"}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -459,4 +459,4 @@ This endpoint remove favorite teachers of a user
 
 Parameter | Required | Description
 --------- | ------- | -----------
-teachers | true | 教师id list
+teacher | true | 教师id
