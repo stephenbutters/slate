@@ -45,6 +45,30 @@ Every API request must come with authorization header (the JSON Web Token string
 
 Every API request must come with application/json content type
 
+# Invitation Code
+
+## Generate Invitation Code
+
+```shell
+curl "https://teacher.filippine.com.cn/api/invite"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint tells the server to generate a invitation code for this user and then send the code to his/her phone via SMS
+
+### HTTPS Request
+
+`GET https://teacher.filippine.com.cn/api/invite`
 
 # Teachers
 
