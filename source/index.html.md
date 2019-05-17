@@ -70,6 +70,8 @@ This endpoint tells the server to generate a invitation code for this user and t
 
 `GET https://teacher.filippine.com.cn/api/invite`
 
+<aside class="notice">The users should already have an account in our database with a phone number, otherwise it would fail</aside>
+
 # Teachers
 
 ## Get Initial Teachers List
