@@ -334,6 +334,8 @@
 <p>This endpoint tells the server to generate a invitation code for this user and then send the code to his/her phone via SMS</p>
 <h3 id='https-request-2'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/invite</code></p>
+
+<aside class="notice">The users should already have an account in our database with a phone number, otherwise it would fail</aside>
 <h1 id='teachers'>Teachers</h1><h2 id='get-initial-teachers-list'>Get Initial Teachers List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInitialTeachersList?limit=5"</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
