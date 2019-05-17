@@ -229,6 +229,14 @@
             <a href="#headers" class="toc-h1 toc-link" data-title="Headers">Headers</a>
           </li>
           <li>
+            <a href="#invitation-code" class="toc-h1 toc-link" data-title="Invitation Code">Invitation Code</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#generate-invitation-code" class="toc-h2 toc-link" data-title="Generate Invitation Code">Generate Invitation Code</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#teachers" class="toc-h1 toc-link" data-title="Teachers">Teachers</a>
               <ul class="toc-list-h2">
                   <li>
@@ -311,6 +319,21 @@
 <p>Every API request must come with authorization header (the JSON Web Token string)</p>
 
 <p>Every API request must come with application/json content type</p>
+<h1 id='invitation-code'>Invitation Code</h1><h2 id='generate-invitation-code'>Generate Invitation Code</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/invite"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint tells the server to generate a invitation code for this user and then send the code to his/her phone via SMS</p>
+<h3 id='https-request-2'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/invite</code></p>
 <h1 id='teachers'>Teachers</h1><h2 id='get-initial-teachers-list'>Get Initial Teachers List</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getInitialTeachersList?limit=5"</span>
   -X GET
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -329,7 +352,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves initial teachers list with all three categories</p>
-<h3 id='https-request-2'>HTTPS Request</h3>
+<h3 id='https-request-3'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getInitialTeachersList</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -363,7 +386,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieve all published teachers by categories</p>
-<h3 id='https-request-3'>HTTPS Request</h3>
+<h3 id='https-request-4'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getPublishedTeachersList</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -410,7 +433,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieve the detail information of a teacher</p>
-<h3 id='https-request-4'>HTTPS Request</h3>
+<h3 id='https-request-5'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getTeacherDetail</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -443,7 +466,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieve the <strong>available</strong> interview time slots of a teacher</p>
-<h3 id='https-request-5'>HTTPS Request</h3>
+<h3 id='https-request-6'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getInterviewTimes</code></p>
 <h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
@@ -495,7 +518,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves the purchased orders of a user</p>
-<h3 id='https-request-6'>HTTPS Request</h3>
+<h3 id='https-request-7'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getInterviewOrdersList</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
@@ -536,7 +559,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves the the order detail</p>
-<h3 id='https-request-7'>HTTPS Request</h3>
+<h3 id='https-request-8'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getInterviewOrder</code></p>
 <h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
@@ -566,7 +589,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint let a user choose his preferrable interview time</p>
-<h3 id='https-request-8'>HTTPS Request</h3>
+<h3 id='https-request-9'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/pushInterviewTime</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
@@ -639,7 +662,7 @@
 <p>This endpoint send payment request to our server which will then send order request to wechat server</p>
 
 <p>Meanwhile, it will generate a purchase order</p>
-<h3 id='https-request-9'>HTTPS Request</h3>
+<h3 id='https-request-10'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/requestPayment</code></p>
 <h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
@@ -715,7 +738,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves favorite teachers of a user</p>
-<h3 id='https-request-10'>HTTPS Request</h3>
+<h3 id='https-request-11'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getFavoriteList</code></p>
 <h2 id='add-favorite-teachers'>Add Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/addFavorite"</span>
   -X POST
@@ -731,7 +754,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint add favorite teachers of a user</p>
-<h3 id='https-request-11'>HTTPS Request</h3>
+<h3 id='https-request-12'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/addFavorite</code></p>
 <h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
@@ -761,7 +784,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint remove favorite teachers of a user</p>
-<h3 id='https-request-12'>HTTPS Request</h3>
+<h3 id='https-request-13'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/removeFavorite</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
