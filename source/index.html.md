@@ -72,6 +72,34 @@ This endpoint tells the server to generate a invitation code for this user and t
 
 <aside class="notice">The users should already have an account in our database with a phone number, otherwise it would fail</aside>
 
+## Verify Invitation Code
+
+```shell
+curl "https://teacher.filippine.com.cn/api/verifyInvitation?code=s8s9"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint checks whether the invitation code that this user typed is correct
+
+### HTTPS Request
+
+`GET https://teacher.filippine.com.cn/api/verifyInvitation`
+
+### Query Parameters
+Parameter | Required | Description
+--------- | ------- | -----------
+code | true | 用户输入的邀请码
+
 # Teachers
 
 ## Get Initial Teachers List
