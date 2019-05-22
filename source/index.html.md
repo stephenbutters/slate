@@ -371,7 +371,7 @@ secondary | true | 备选面试时间
 ```shell
 curl "https://teacher.filippine.com.cn/api/requestPayment"
   -X POST
-  -d '{"candidates": ["27446972", "90833356"], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o", "types": "offline"}'
+  -d '{"candidates": ["27446972", "90833356"], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o", "type": "offline"}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -408,7 +408,7 @@ Parameter | Required | Description
 --------- | ------- | -----------
 candidates | true | 订单里面的教师id list
 openid | true | 用户在此appid下的唯一标识
-types | true | 选择线上面试还是线下(online/offline)
+type | true | 选择线上面试还是线下(online/offline)
 
 ### Returned Parameters
 
