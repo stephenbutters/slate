@@ -670,7 +670,7 @@
 </tbody></table>
 <h1 id='wechat-pay'>Wechat Pay</h1><h2 id='request-payment'>Request Payment</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/requestPayment"</span>
   -X POST
-  -d <span class="s1">'{"candidates": ["27446972", "90833356"], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'</span>
+  -d <span class="s1">'{"candidates": ["27446972", "90833356"], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}, "types": "offline"'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -715,6 +715,11 @@
 <td>openid</td>
 <td>true</td>
 <td>用户在此appid下的唯一标识</td>
+</tr>
+<tr>
+<td>types</td>
+<td>true</td>
+<td>选择线上面试还是线下(online/offline)</td>
 </tr>
 </tbody></table>
 <h3 id='returned-parameters'>Returned Parameters</h3>
