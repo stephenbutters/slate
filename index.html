@@ -670,7 +670,7 @@
 </tbody></table>
 <h1 id='wechat-pay'>Wechat Pay</h1><h2 id='request-payment'>Request Payment</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/requestPayment"</span>
   -X POST
-  -d <span class="s1">'{"candidates": ["27446972", "90833356"], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o", "type": "offline"}'</span>
+  -d <span class="s1">'{"candidates": [{"id": 94270660, "primary": {"date": "2019-05-19", "time": "9:30 - 10:00"}, "secondary": {"date": "2019-05-20", "time": "10:30 - 11:00"}}], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
 </code></pre>
@@ -709,17 +709,36 @@
 <tr>
 <td>candidates</td>
 <td>true</td>
-<td>订单里面的教师id list</td>
+<td>订单里面的教师list</td>
 </tr>
 <tr>
 <td>openid</td>
 <td>true</td>
 <td>用户在此appid下的唯一标识</td>
 </tr>
+</tbody></table>
+<h3 id='candidates-array-of-objects-comprise-the-following'>candidates 结构 (array of objects comprise the following)</h3>
+<table><thead>
 <tr>
-<td>type</td>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
 <td>true</td>
-<td>选择线上面试还是线下(online/offline)</td>
+<td>此教师id</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>true</td>
+<td>首选面试时间</td>
+</tr>
+<tr>
+<td>secondary</td>
+<td>true</td>
+<td>备选面试时间</td>
 </tr>
 </tbody></table>
 <h3 id='returned-parameters'>Returned Parameters</h3>
