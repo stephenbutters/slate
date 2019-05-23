@@ -285,10 +285,24 @@
                     <a href="#get-favorite-list" class="toc-h2 toc-link" data-title="Get Favorite List">Get Favorite List</a>
                   </li>
                   <li>
-                    <a href="#add-favorite-teachers" class="toc-h2 toc-link" data-title="Add Favorite Teachers">Add Favorite Teachers</a>
+                    <a href="#add-favorite-teacher" class="toc-h2 toc-link" data-title="Add Favorite Teacher">Add Favorite Teacher</a>
                   </li>
                   <li>
-                    <a href="#remove-favorite-teachers" class="toc-h2 toc-link" data-title="Remove Favorite Teachers">Remove Favorite Teachers</a>
+                    <a href="#remove-favorite-teacher" class="toc-h2 toc-link" data-title="Remove Favorite Teacher">Remove Favorite Teacher</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#shopping-cart" class="toc-h1 toc-link" data-title="Shopping Cart">Shopping Cart</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-shopping-cart" class="toc-h2 toc-link" data-title="Get Shopping Cart">Get Shopping Cart</a>
+                  </li>
+                  <li>
+                    <a href="#add-shopping-cart-item" class="toc-h2 toc-link" data-title="Add Shopping Cart Item">Add Shopping Cart Item</a>
+                  </li>
+                  <li>
+                    <a href="#remove-shopping-cart-item" class="toc-h2 toc-link" data-title="Remove Shopping Cart Item">Remove Shopping Cart Item</a>
                   </li>
               </ul>
           </li>
@@ -787,7 +801,7 @@
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"favorites"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"english_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evelyn Navarro Mantabonte"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"candidate_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evelyn Navarro Mantabonte"</span><span class="p">,</span><span class="w">
       </span><span class="err">...</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -798,7 +812,7 @@
 <p>This endpoint retrieves favorite teachers of a user</p>
 <h3 id='https-request-12'>HTTPS Request</h3>
 <p><code>GET https://teacher.filippine.com.cn/api/getFavoriteList</code></p>
-<h2 id='add-favorite-teachers'>Add Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/addFavorite"</span>
+<h2 id='add-favorite-teacher'>Add Favorite Teacher</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/addFavorite"</span>
   -X POST
   -d <span class="s1">'{"teacher": "90833356"}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -828,7 +842,7 @@
 <td>教师id</td>
 </tr>
 </tbody></table>
-<h2 id='remove-favorite-teachers'>Remove Favorite Teachers</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/removeFavorite"</span>
+<h2 id='remove-favorite-teacher'>Remove Favorite Teacher</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/removeFavorite"</span>
   -X POST
   -d <span class="s1">'{"teacher": "90833356"}'</span>
   -H <span class="s2">"Content-Type: application/json"</span>
@@ -845,6 +859,90 @@
 <h3 id='https-request-14'>HTTPS Request</h3>
 <p><code>POST https://teacher.filippine.com.cn/api/removeFavorite</code></p>
 <h3 id='query-parameters-11'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>teacher</td>
+<td>true</td>
+<td>教师id</td>
+</tr>
+</tbody></table>
+<h1 id='shopping-cart'>Shopping Cart</h1><h2 id='get-shopping-cart'>Get Shopping Cart</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/getCart"</span>
+  -X GET
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"candidate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95874587"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"candidate_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1"</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the shopping cart of a user</p>
+<h3 id='https-request-15'>HTTPS Request</h3>
+<p><code>GET https://teacher.filippine.com.cn/api/getCart</code></p>
+<h2 id='add-shopping-cart-item'>Add Shopping Cart Item</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/addCartItem"</span>
+  -X POST
+  -d <span class="s1">'{"teacher": "90833356"}'</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint add an item to the shopping cart of a user</p>
+<h3 id='https-request-16'>HTTPS Request</h3>
+<p><code>POST https://teacher.filippine.com.cn/api/addCartItem</code></p>
+<h3 id='query-parameters-12'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>teacher</td>
+<td>true</td>
+<td>教师id</td>
+</tr>
+</tbody></table>
+<h2 id='remove-shopping-cart-item'>Remove Shopping Cart Item</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://teacher.filippine.com.cn/api/removeCartItem"</span>
+  -X POST
+  -d <span class="s1">'{"teacher": "90833356"}'</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"</span>
+</code></pre>
+<blockquote>
+<p>The above command should return JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint remove an item from the shopping cart of a user</p>
+<h3 id='https-request-17'>HTTPS Request</h3>
+<p><code>POST https://teacher.filippine.com.cn/api/removeCartItem</code></p>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
