@@ -371,7 +371,7 @@ secondary | true | 备选面试时间
 ```shell
 curl "https://teacher.filippine.com.cn/api/requestPayment"
   -X POST
-  -d '{"candidates": ["27446972", "90833356"], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o", "type": "offline"}'
+  -d '{"candidates": [{"id": 94270660, "primary": {"date": "2019-05-19", "time": "9:30 - 10:00"}, "secondary": {"date": "2019-05-20", "time": "10:30 - 11:00"}}], "openid":"oUpF8uMuAJO_M2pxb1Q9zNjWeS6o"}'
   -H "Content-Type: application/json"
   -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
 ```
@@ -406,9 +406,15 @@ Meanwhile, it will generate a purchase order
 
 Parameter | Required | Description
 --------- | ------- | -----------
-candidates | true | 订单里面的教师id list
+candidates | true | 订单里面的教师list
 openid | true | 用户在此appid下的唯一标识
-type | true | 选择线上面试还是线下(online/offline)
+
+### candidates 结构 (array of objects comprise the following)
+Parameter | Required | Description
+--------- | ------- | -----------
+id | true | 此教师id
+primary | true | 首选面试时间
+secondary | true | 备选面试时间
 
 ### Returned Parameters
 
