@@ -447,7 +447,7 @@ curl "https://teacher.filippine.com.cn/api/getFavoriteList"
   "success": true,
   "favorites": [
     {
-      "english_name": "Evelyn Navarro Mantabonte",
+      "candidate_name": "Evelyn Navarro Mantabonte",
       ...
     },
     {...},
@@ -462,7 +462,7 @@ This endpoint retrieves favorite teachers of a user
 
 `GET https://teacher.filippine.com.cn/api/getFavoriteList`
 
-## Add Favorite Teachers
+## Add Favorite Teacher
 
 ```shell
 curl "https://teacher.filippine.com.cn/api/addFavorite"
@@ -492,7 +492,7 @@ Parameter | Required | Description
 --------- | ------- | -----------
 teacher | true | 教师id
 
-## Remove Favorite Teachers
+## Remove Favorite Teacher
 
 ```shell
 curl "https://teacher.filippine.com.cn/api/removeFavorite"
@@ -515,6 +515,100 @@ This endpoint remove favorite teachers of a user
 ### HTTPS Request
 
 `POST https://teacher.filippine.com.cn/api/removeFavorite`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+teacher | true | 教师id
+
+# Shopping Cart
+
+## Get Shopping Cart
+
+```shell
+curl "https://teacher.filippine.com.cn/api/getCart"
+  -X GET
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true,
+  "cart": [
+    {
+      "candidate_id": "95874587",
+      "candidate_name": "test1"
+      ...
+    },
+    {...},
+    {...}
+  ]
+}
+```
+
+This endpoint retrieves the shopping cart of a user
+
+### HTTPS Request
+
+`GET https://teacher.filippine.com.cn/api/getCart`
+
+## Add Shopping Cart Item
+
+```shell
+curl "https://teacher.filippine.com.cn/api/addCartItem"
+  -X POST
+  -d '{"teacher": "90833356"}'
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint add an item to the shopping cart of a user
+
+### HTTPS Request
+
+`POST https://teacher.filippine.com.cn/api/addCartItem`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+teacher | true | 教师id
+
+## Remove Shopping Cart Item
+
+```shell
+curl "https://teacher.filippine.com.cn/api/removeCartItem"
+  -X POST
+  -d '{"teacher": "90833356"}'
+  -H "Content-Type: application/json"
+  -H "Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE4MTM4NzEyMTI4IiwiaWF0IjoxNTU2NTA3MDQ4LCJleHAiOjIxNjEzMDcwNDh9.Sd42wEnznbDfqEoPkfNj9SmxQSOskiOVdNWYKZLy5Vg"
+```
+
+> The above command should return JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint remove an item from the shopping cart of a user
+
+### HTTPS Request
+
+`POST https://teacher.filippine.com.cn/api/removeCartItem`
 
 ### Query Parameters
 
