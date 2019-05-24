@@ -410,11 +410,19 @@ candidates | true | 订单里面的教师list
 openid | true | 用户在此appid下的唯一标识
 
 ### candidates 结构 (array of objects comprise the following)
+
 Parameter | Required | Description
 --------- | ------- | -----------
 id | true | 此教师id
 primary | true | 首选面试时间
 secondary | true | 备选面试时间
+
+### primary和secondary 结构
+
+Parameter | Required | Description
+--------- | ------- | -----------
+date | true | 日期 eg. "2019-05-22"
+time | true | 时间 eg. "9:30 - 10:00" (**时间区间只能为半小时的间隔**)
 
 ### Returned Parameters
 
