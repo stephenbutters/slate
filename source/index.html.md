@@ -414,8 +414,9 @@ openid | true | 用户在此appid下的唯一标识
 Parameter | Required | Description
 --------- | ------- | -----------
 id | true | 此教师id
-primary | true | 首选面试时间
-secondary | true | 备选面试时间
+primary | false | 首选面试时间(若不传contactAgent, 或者contactAgent为false, 则必填)
+secondary | false | 备选面试时间(若不传contactAgent, 或者contactAgent为false, 则必填)
+contactAgent | false | 是否联系顾问选择面试时间(若没有传primary和secondary, 则必填)
 
 ### primary和secondary 结构
 
